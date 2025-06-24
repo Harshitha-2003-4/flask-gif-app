@@ -45,6 +45,7 @@ Open your browser and go to:http://localhost
 Or, if running on an EC2 instance:http://<your-ec2-public-ip>
 
 📌 Notes
+
 The app randomly selects a GIF URL from a predefined list.
 
 A refresh button is provided to load a new GIF without restarting the app.
