@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Random Fun GIF</title>
+    <style>
+        body {
+            text-align: center;
+            padding: 50px;
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+        }
+        h1 {
+            color: #333;
+        }
+        img {
+            max-width: 90%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .refresh {
+            margin-top: 30px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Refresh for a Random GIF</h1>
+    <img src="{{ gif_url }}" alt="Fun GIF">
+    <div class="refresh">
+        <form method="get" action="/">
+            <button type="submit">Show Another!</button>
+        </form>
+    </div>
+</body>
+</html>
