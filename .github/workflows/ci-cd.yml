@@ -1,0 +1,39 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [ docker-flask-version ]
+  workflow_dispatch:
+    inputs:
+      env:
+        description: "Environment"
+        required: false
+        default: "dev"
+      actor:
+        description: "Triggered by (Slack user)"
+        required: false
+        default: "unknown"
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Run tests (if present)
+        run: |
+          if [ -d tests ]; then pip install pytest && pytest -q; else echo "No tests found"; fi
+
+      - name: Build Docker image
+        run: docker build -t flask-gif-app:ci .
