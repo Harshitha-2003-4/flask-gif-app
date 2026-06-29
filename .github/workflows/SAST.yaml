@@ -1,4 +1,4 @@
-name: AccuKnox SAST Scan Workflow
+name: AccuKnox SAST Scan Workflow new
 
 on:
   push:
