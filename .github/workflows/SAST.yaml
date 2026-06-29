@@ -1,0 +1,21 @@
+name: AccuKnox SAST Scan Workflow
+
+on:
+  push:
+    branches:
+      - docker-flask-version
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@main
+
+      - name: Accuknox SAST
+        uses: accuknox/sast-scan-opengrep-action@1.0.0
+        with:
+          accuknox_token: ${{ secrets.ACCUKNOX_TOKEN }}
+          accuknox_endpoint: ${{ secrets.ACCUKNOX_ENDPOINT }}
+          accuknox_label: ${{ secrets.ACCUKNOX_LABEL }}
+          input_soft_fail: false
